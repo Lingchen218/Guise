@@ -15,7 +15,6 @@ import com.houvven.guise.hook.hooker.TimezoneHooker
 import com.houvven.guise.hook.hooker.WifiHooker
 import com.houvven.guise.hook.hooker.location.CellHooker
 import com.houvven.guise.hook.hooker.location.LocationHooker
-import com.houvven.guise.hook.hooker.system.location.SysLocationHooker
 import com.houvven.guise.hook.store.impl.SharedPreferenceModuleStore
 
 @InjectYukiHookWithXposed(
@@ -65,9 +64,9 @@ object HookEntry : IYukiHookXposedInit {
     }
 
     private fun PackageParam.loadFrameworkHooker() {
-        loadSystem {
-            loadHooker(SysLocationHooker())
-        }
+//        loadSystem {
+//            loadHooker(SysLocationHooker())
+//        }
     }
 
 }
