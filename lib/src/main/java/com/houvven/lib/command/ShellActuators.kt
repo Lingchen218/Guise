@@ -18,8 +18,7 @@ object ShellActuators {
 
     @JvmStatic
     fun exec(
-        commands: Array<String>,
-        useRoot: Boolean
+        commands: Array<String>, useRoot: Boolean
     ) = runCatching {
         if (commands.isEmpty()) {
             throw IllegalArgumentException("commands is empty.")
@@ -30,7 +29,9 @@ object ShellActuators {
             for (it in commands) {
                 if (it.isBlank()) continue
                 os.run {
-                    write(it.toByteArray()); writeBytes(COMMAND_LINE_END); flush()
+                    write(it.toByteArray());
+                    writeBytes(COMMAND_LINE_END);
+                    flush()
                 }
             }
             os.writeBytes(COMMAND_EXIT)

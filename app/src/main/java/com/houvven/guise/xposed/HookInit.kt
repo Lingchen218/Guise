@@ -1,5 +1,6 @@
 package com.houvven.guise.xposed
 
+import android.util.Log
 import com.houvven.guise.BuildConfig
 import com.houvven.guise.xposed.config.ModuleConfig
 import com.houvven.guise.xposed.hook.BatteryHook
@@ -27,10 +28,13 @@ class HookInit : HookLoadPackageHandler {
 
     override fun loadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
 
+        Log.d("Guise", "start loadPackage: ${lpparam.packageName} [${lpparam.appInfo.name}]")
+
         XposedLogger.i("start loadPackage: ${lpparam.packageName} [${lpparam.appInfo.name}]")
         PackageConfig.doRefresh(lpparam.packageName)
         if (!packageConfig.isEnable) {
             XposedLogger.i("loadPackage: ${lpparam.packageName} is not enable, skip.")
+            Log.d("Guise", "loadPackage: ${lpparam.packageName} is not enable, skip.")
             return
         }
 

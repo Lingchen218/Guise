@@ -117,6 +117,7 @@ dependencies {
 
     compileOnly("de.robv.android.xposed:api:82")
     implementation(project(":ktx-xposed"))
+
     implementation("com.tencent:mmkv:1.2.15")
     // implementation("io.github.admin4j:http:0.4.0")
 

@@ -1,5 +1,6 @@
 package com.houvven.ktx_xposed.logger
 
+import android.annotation.SuppressLint
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -18,6 +19,7 @@ data class ModuleLog(
     // 日志内容
     @ColumnInfo(name = "message") val message: String,
 ) {
+    @SuppressLint("DefaultLocale")
     override fun toString(): String {
         return "[  ${String.format("%tF %<tT.%<tL", time)}      level:$type      source:$source  ]     $message"
     }

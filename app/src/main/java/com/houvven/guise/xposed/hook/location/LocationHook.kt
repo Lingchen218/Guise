@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.SystemClock
+import android.util.Log
 import com.houvven.guise.xposed.LoadPackageHandler
 import com.houvven.ktx_xposed.hook.afterHookedMethod
 import com.houvven.ktx_xposed.hook.beforeHookConstructor
@@ -37,6 +38,8 @@ class LocationHook : LoadPackageHandler, LocationHookBase() {
 
 
     override fun onHook() {
+        Log.d("Guise", "LocationHook.onHook() called")
+
         if (longitude == -1.0 && latitude == -1.0) return
 
         // LocationHook Enabled
@@ -58,7 +61,9 @@ class LocationHook : LoadPackageHandler, LocationHookBase() {
     }
 
     private fun fakeLatlng() {
+        Log.d("Guise", "LocationHook.fakeLatlng() called")
         Location::class.java.run {
+            Log.d("Guise", "Location::class.java.run called ${latitude} ${longitude}")
             setMethodResult("getLongitude", longitude)
             setMethodResult("getLatitude", latitude)
         }
