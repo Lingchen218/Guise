@@ -1,5 +1,5 @@
 [versions]
-agp = "8.5.0"
+agp = "8.3.2"
 composeDestinations = "2.1.0-beta03"
 hiddenapibypass = "4.3"
 koin = "3.5.6"
@@ -55,7 +55,7 @@ yuki-api = { module = "com.highcapable.yukihookapi:api", version.ref = "yuki" }
 yuki-ksp-xposed = { module = "com.highcapable.yukihookapi:ksp-xposed", version.ref = "yuki" }
 xposed-api = { module = "de.robv.android.xposed:api", version.ref = "xposed" }
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
-lservice = { module = "io.github.houvven:lservice", version.ref = "lservice" }
+lservice = { module = "io.github.Lingchen218:lservice", version.ref = "lservice" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

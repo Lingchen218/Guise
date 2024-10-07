@@ -40,7 +40,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.yuki.api)
-    compileOnlyApi(libs.xposed.api)
+    compileOnly(libs.xposed.api)
     ksp(libs.yuki.ksp.xposed)
 
     implementation(libs.kotlin.serialization.json)

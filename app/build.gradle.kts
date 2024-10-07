@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = namespace
-        minSdk = 24
+        minSdk = 27
         targetSdk = 35
         val version = loadProperties(file("version.properties").path)
         versionCode = version.getProperty("version.code").toInt()

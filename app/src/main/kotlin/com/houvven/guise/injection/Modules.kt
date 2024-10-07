@@ -8,7 +8,7 @@ import com.houvven.guise.hook.store.ModuleStore
 import com.houvven.guise.hook.store.impl.MediaModuleStore
 import com.houvven.guise.hook.store.impl.SharedPreferenceModuleStore
 import com.houvven.guise.ui.screen.launch.home.HomeViewModel
-import com.houvven.guise.ui.screen.launch.person.PersonViewModel
+//import com.houvven.guise.ui.screen.launch.person.PersonViewModel
 import com.houvven.guise.ui.screen.profile.AppProfileReviseViewModel
 import com.houvven.guise.util.app.AppScanner
 import org.koin.android.ext.koin.androidContext
@@ -56,5 +56,5 @@ val profileSuggestModule = module {
 val viewModelModule = module {
     viewModelOf(::HomeViewModel)
     viewModelOf(::AppProfileReviseViewModel)
-    viewModelOf(::PersonViewModel)
+    //viewModelOf(::PersonViewModel)
 }
