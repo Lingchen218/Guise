@@ -242,17 +242,17 @@ private val NetworkReviseItems = listOf(
     ProfileReviseEditor.Text(
         label = { stringResource(id = R.string.xxxnetwork_type) },
         value = { wifiMac },
-        onValueChange = { properties { copy(manufacturer = it) } },
+        onValueChange = {  copy(wifiMac = it)  },
     ),
    ProfileReviseEditor.Text(
             label = { stringResource(id = R.string.wifissidnetwork_type) },
             value = { wifiSsid },
-            onValueChange = { properties { copy(manufacturer = it) } },
+            onValueChange = { copy(wifiSsid = it) },
     ),
     ProfileReviseEditor.Text(
         label = { stringResource(id = R.string.wifiBssidnetwork_type) },
         value = { wifiBssid },
-        onValueChange = { properties { copy(manufacturer = it) } },
+        onValueChange = {copy(wifiBssid = it) },
     )
 )
 
