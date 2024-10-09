@@ -29,4 +29,7 @@
     <string name="lservice_error_title">LService Error</string>
     <string name="lservice_description">The service for LSPosed scope synchronization is only supported on LSPosed.</string>
     <string name="ok">OK</string>
+    <string name="xxxnetwork_type">WifiMac</string>
+    <string name="wifissidnetwork_type">wifiSsid</string>
+    <string name="wifiBssidnetwork_type">wifiBssid</string>
 </resources>

@@ -238,6 +238,21 @@ private val NetworkReviseItems = listOf(
         onValueChange = { copy(mobileNetType = it) },
         stringToNumber = { it.toIntOrNull() },
         suggestRepo = MobileNetworkTypeRepo
+    ),
+    ProfileReviseEditor.Text(
+        label = { stringResource(id = R.string.xxxnetwork_type) },
+        value = { wifiMac },
+        onValueChange = { properties { copy(manufacturer = it) } },
+    ),
+   ProfileReviseEditor.Text(
+            label = { stringResource(id = R.string.wifissidnetwork_type) },
+            value = { wifiSsid },
+            onValueChange = { properties { copy(manufacturer = it) } },
+    ),
+    ProfileReviseEditor.Text(
+        label = { stringResource(id = R.string.wifiBssidnetwork_type) },
+        value = { wifiBssid },
+        onValueChange = { properties { copy(manufacturer = it) } },
     )
 )
 

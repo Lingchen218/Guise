@@ -24,6 +24,9 @@
     <string name="network_type_ethernet">以太网</string>
     <string name="network_info">网络信息</string>
     <string name="network_type">网络类型</string>
+    <string name="xxxnetwork_type">wifimac</string>
+    <string name="wifissidnetwork_type">wifiSsid</string>
+    <string name="wifiBssidnetwork_type">wifiBssid</string>
     <string name="identity">标识符</string>
     <string name="mobile_network_type">移动网络类型</string>
 </resources>

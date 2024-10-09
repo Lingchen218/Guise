@@ -50,13 +50,13 @@ object HookEntry : IYukiHookXposedInit {
             isExcludeSelf = true,
             *listOf(
                 ::PackageHooker,
-                ::ResourceConfigurationHooker,
-                ::LocationHooker,
+                ::ResourceConfigurationHooker, // 资源配置
+                ::LocationHooker,  // 位置?
                 ::CellHooker,
                 ::SettingsSecureHooker,
                 ::TimezoneHooker,
-                ::NetworkHooker,
-                ::WifiHooker
+                ::NetworkHooker,// 网络
+                ::WifiHooker// wifi
             ).map { it.invoke(profiles) }
                 .plus(PropertiesHooker(profiles.properties))
                 .toTypedArray()
