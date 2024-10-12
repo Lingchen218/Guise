@@ -45,6 +45,23 @@ android {
             )
         }
     }
+
+    lint {
+        // 这一行指定了一个基线文件，该文件用于记录已知的、可以接受的、不会被lint检查标记为问题的代码问题。
+        // 在持续集成过程中，
+        // 基线文件可以用来忽略那些已知的、不打算修复的问题，
+        // 从而专注于新的、潜在的问题
+        baseline = file("lint-baseline.xml")
+        // checkReleaseBuilds
+        // 表示在构建发布版本时会执行代码质量检查。
+        // 这通常意味着在准备发布应用到生产环境之前，
+        // 会运行一系列的静态代码分析规则来确保代码质量，比如检查潜在的错误、不规范的代码实践等。
+        checkReleaseBuilds = true
+
+        abortOnError = false
+    }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

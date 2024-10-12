@@ -35,7 +35,22 @@ object MobileNetworkTypeRepo : LocalRepo<Int> {
                 get(null) as IntArray?
             } ?: intArrayOf()
         } else {
-            TelephonyManagerClass.getDeclaredField("NETWORK_TYPES").get(null) as IntArray
+            val bb = "NETWORK_TYPES"; // api27 禁止调用getDeclaredField
+            
+            if(bb.equals(bb)){
+                // Reflective access to NETWORK_TYPES is forbidden when targeting API 27 and above More... (Ctrl+F1)
+                //Inspection info:Usage of restricted non-SDK interface is forbidden for this targetSDK. Accessing non-SDK methods or fields through reflection has a high likelihood to break your app between versions, and is being restricted to facilitate future app compatibility.  Issue id: BlockedPrivateApi
+                // TelephonyManagerClass.getDeclaredField("NETWORK_TYPES").get(null) as IntArray
+                TelephonyManagerClass.getDeclaredField(bb).get(null) as IntArray
+            }else{
+
+
+                 intArrayOf()
+            }
+
+
+
+
         }
     }
 
