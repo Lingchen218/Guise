@@ -3,6 +3,7 @@ package com.houvven.guise.hook.hooker
 import android.net.NetworkCapabilities
 import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
+import android.util.Log
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.classOf
 import com.highcapable.yukihookapi.hook.factory.current
@@ -34,8 +35,12 @@ internal class WifiHooker(private val profiles: HookProfiles) : YukiBaseHooker()
             name = "getConnectionInfo"
         }.hook().after {
             result?.current {
-                wifiBssid?.let { field { name = "mBSSID" }.set(it) }
-                wifiMac?.let { field { name = "mMacAddress" }.set(it) }
+                wifiBssid?.let {
+                    field { name = "mBSSID" }.set(it)
+                }
+                wifiMac?.let {
+                    field { name = "mMacAddress" }.set(it)
+                }
 
             }
         }
