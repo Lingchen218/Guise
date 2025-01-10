@@ -21,7 +21,7 @@ betterandroid = "1.0.1"
 yuki = "1.2.0"
 xposed = "82"
 lservice = "1.0.0"
-
+cxx = "1.2.0"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
@@ -54,6 +54,7 @@ betterandroid-extension-system = { module = "com.highcapable.betterandroid:syste
 yuki-api = { module = "com.highcapable.yukihookapi:api", version.ref = "yuki" }
 yuki-ksp-xposed = { module = "com.highcapable.yukihookapi:ksp-xposed", version.ref = "yuki" }
 xposed-api = { module = "de.robv.android.xposed:api", version.ref = "xposed" }
+cxx = { module = "dev.rikka.ndk.thirdparty:cxx", version.ref = "cxx" }
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
 lservice = { module = "io.github.Lingchen218:lservice", version.ref = "lservice" }
 

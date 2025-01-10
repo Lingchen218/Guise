@@ -1,10 +1,21 @@
 package com.houvven.guise.hook.dex
 
+import android.util.Log
+import com.houvven.guise.hook.HookEntry
 import java.io.Closeable
 import java.lang.reflect.Field
 import java.lang.reflect.Member
 class DexHelper(private val classLoader: ClassLoader) : Object(), AutoCloseable, Closeable {
 
+    init {
+        try {
+            Log.e(HookEntry.TAG, "load library start2: ")
+            System.loadLibrary("dexhelper")
+            Log.e(HookEntry.TAG, "end  loadLibrary")
+        } catch (e: Exception) {
+            Log.e(HookEntry.TAG, "load library error: $e")
+        }
+    }
     companion object {
         @JvmStatic
         val NO_CLASS_INDEX = -1

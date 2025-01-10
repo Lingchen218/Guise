@@ -897,7 +897,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *) {
     if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_4) != JNI_OK) {
         return -1;
     }
-    jclass helper = env->FindClass("com/rarnu/dex/DexHelper");
+
+    jclass helper = env->FindClass("com/houvven/guise/hook/dex/DexHelper");
     token_field = env->GetFieldID(helper, "token", "J");
     class_loader_field = env->GetFieldID(helper, "classLoader", "Ljava/lang/ClassLoader;");
     auto class_loader = env->FindClass("java/lang/ClassLoader");
