@@ -19,10 +19,8 @@ class Application : AndroidApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
         Log.d(TAG, "uid: $MY_USER_ID")
         Log.d(TAG, "module_active: ${ModuleStatus.isModuleActive}")
-
         startKoin {
             androidLogger()
             androidContext(this@Application)

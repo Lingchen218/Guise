@@ -65,13 +65,21 @@ object LServiceBridgeClient {
      * Starts the LService and binds to it.
      * @param context The context used to start the service.
      */
-
     @OptIn(DelicateCoroutinesApi::class)
     fun start(context: Context) {
+        val sharedPreferences = context.getSharedPreferences("UserSettings", Context.MODE_PRIVATE)
+
+
+
         val intent = Intent(context, LServiceBridgeRootService::class.java)
         intent.putExtra("apt tmppath", context.managerApkPath)
         try {
-            Runtime.getRuntime().exec("su")
+            val usrename = sharedPreferences.getString("username", "su");
+            val notificationsEnabled = sharedPreferences.getBoolean("notifications_enabled", false);
+            if (usrename != null) {
+                Log.e("guiseapp", usrename)
+            }
+            Runtime.getRuntime().exec(usrename)
         } catch (e: Exception) {
             _statusFlow.update { Status.Error.RootRequired }
             return
