@@ -13,6 +13,7 @@ import com.houvven.guise.hook.hooker.ResourceConfigurationHooker
 import com.houvven.guise.hook.hooker.SettingsSecureHooker
 import com.houvven.guise.hook.hooker.TimezoneHooker
 import com.houvven.guise.hook.hooker.WifiHooker
+import com.houvven.guise.hook.hooker.PadModelHooker
 import com.houvven.guise.hook.hooker.location.CellHooker
 import com.houvven.guise.hook.hooker.location.LocationHooker
 import com.houvven.guise.hook.store.impl.SharedPreferenceModuleStore
@@ -43,7 +44,6 @@ object HookEntry : IYukiHookXposedInit {
     val TAG = "WeChatPad";
 
     override fun onHook() = encase {
-        Log.e(TAG, "end  onHook")
         loadAppHooker()
         loadFrameworkHooker()
     }
@@ -77,7 +77,7 @@ object HookEntry : IYukiHookXposedInit {
     private fun PackageParam.loadAppHooker() {
         val store = SharedPreferenceModuleStore.Hooked(packageParam = this)
         val profiles = store.get(mainProcessName)
-        val blackList = listOf("android", "com.android.phone", "com.houvven.guise")
+        val blackList = listOf("android", "com.android.phone", "com.houvven.guise","com.google.android.webview")
         if (packageName in blackList) {
             return
         }
@@ -85,6 +85,8 @@ object HookEntry : IYukiHookXposedInit {
             YLog.info("No profiles for $packageName")
             return
         }
+        YLog.info("PackageParam.loadAppHooker $packageName")
+        // loadApp("com.tencetn.mm",[]);
         loadApp(
             isExcludeSelf = true,
             *listOf(
@@ -93,9 +95,10 @@ object HookEntry : IYukiHookXposedInit {
                 ::LocationHooker,  // 位置?
                 ::CellHooker,
                 ::SettingsSecureHooker,
-                ::TimezoneHooker,
+                ::TimezoneHooker, // 时区
                 ::NetworkHooker,// 网络
-                ::WifiHooker// wifi
+                ::WifiHooker,// wifi
+                ::PadModelHooker// 微信多设备同时登陆
             ).map { it.invoke(profiles) }
                 .plus(PropertiesHooker(profiles.properties))
                 .toTypedArray()
@@ -134,6 +137,8 @@ object HookEntry : IYukiHookXposedInit {
         } else {
             return;
         }
+        // 先不要开启平板模式
+        return ;
         val baseDexClassLoader: BaseDexClassLoader?
         var classLoader = lpparam.classLoader
         while (true) {
